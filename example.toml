@@ -1,0 +1,59 @@
+[project]
+name = "Mein Projekt"
+start = 2021-05-05
+# In hours
+workday = 8.0
+
+    [[project.tasks]]
+    name = "DEV Entfernen Kolab-Attribute"
+    # In hours
+    effort = 4
+    [[project.tasks]]
+    name = "DEV Mailbestellung"
+    effort = 5
+    [[project.tasks]]
+    name = "DEV Mehrfachrollen"
+    effort = 6
+    [[project.tasks]]
+    name = "DEV Person nicht angelegt"
+    effort = 4
+    [[project.tasks]]
+    name = "DEV Polygon"
+    effort = 8
+    [[project.tasks]]
+    name = "DEV Umzubenennende Accounts"
+    effort = 6
+    [[project.tasks]]
+    name = "Verzögerungen"
+    effort = 8
+
+    [project.resources.dave]
+    from = 2021-05-08
+    to = 2021-05-10
+    # Per day
+    hours = 2
+    exceptions = []
+
+    [project.resources.hans-1]
+    from = 2021-05-05
+    to = 2021-05-13
+    hours = 4
+    exceptions = [2021-04-07]
+
+    [project.resources.hans-2]
+    from = 2021-05-14
+    to = 2021-06-01
+    hours = 2
+    exceptions = []
+
+[[freedays]]
+name = "Auffahrt"
+date = 2021-05-13
+
+[[freedays]]
+name = "Pfingstmontag"
+date = 2021-05-24
+
+[[freedays]]
+name = "Nationalfeiertag"
+date = 2021-08-01
