@@ -27,20 +27,15 @@ workday = 8.0
     name = "Verzögerungen"
     effort = 8
 
-    [project.resources.dave]
-    from = 2021-05-08
-    to = 2021-05-10
-    # Per day
-    hours = 2
-    exceptions = []
-
-    [project.resources.hans-1]
+    [[project.resources]]
+    name = "hans 1"
     from = 2021-05-05
     to = 2021-05-13
     hours = 4
-    exceptions = [2021-04-07]
+    exceptions = [2021-05-07]
 
-    [project.resources.hans-2]
+    [[project.resources]]
+    name = "hans 2"
     from = 2021-05-14
     to = 2021-06-01
     hours = 2

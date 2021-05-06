@@ -20,13 +20,16 @@ def date_key(date):
 
 def get_resource_intervals(resources):
     intervals = IntervalTree()
-    for key in resources.keys():
-        resource = resources[key]
+    for resource in resources:
         from_ = resource["from"]
         to_ = resource["to"]
-        hours = resource["hours"]
-        exceptions = set(resource["exceptions"])
-        intervals[from_:to_] = (hours, exceptions, key)
+        exceptions = resource.get("exceptions")
+        if exceptions:
+            exceptions = set(resource["exceptions"])
+        else:
+            exceptions = set()
+        resource["exceptions"] = exceptions
+        intervals[from_:to_] = resource
     return intervals
 
 
@@ -65,7 +68,9 @@ def simulate(verbose, project, effort, intervals, freedays):
         usings = []
         if not (is_weekend(day) or date_key(day) in freedays):
             for resource in intervals[day]:
-                hours, exceptions, key = resource.data
+                resource = resource.data
+                exceptions = resource["exceptions"]
+                hours = resource["hours"]
                 if day not in exceptions:
                     if verbose:
                         usings.append(f"    Using {hours:7.1f} hours from {key:>17}")
