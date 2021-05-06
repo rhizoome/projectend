@@ -21,6 +21,7 @@ def date_key(date):
 def get_resource_intervals(resources):
     intervals = IntervalTree()
     for resource in resources:
+        assert "name" in resource
         from_ = resource["from"]
         to_ = resource["to"]
         exceptions = resource.get("exceptions")
@@ -73,7 +74,10 @@ def simulate(verbose, project, effort, intervals, freedays):
                 hours = resource["hours"]
                 if day not in exceptions:
                     if verbose:
-                        usings.append(f"    Using {hours:7.1f} hours from {key:>17}")
+                        res_name = resource["name"]
+                        usings.append(
+                            f"    Using {hours:7.1f} hours from {res_name:>17}"
+                        )
                     effort -= hours
         if old_effort != effort:
             if week != last_week:
