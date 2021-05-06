@@ -34,7 +34,7 @@ def get_resource_intervals(resources):
         from_ = resource["from"]
         to_ = resource["to"]
         resource["exceptions"] = make_optional_set(resource, "exceptions")
-        resource["days"] = make_optional_set(resource, "days")
+        resource["weekdays"] = make_optional_set(resource, "weekdays")
         intervals[from_:to_] = resource
     return intervals
 
@@ -85,7 +85,7 @@ def simulate(verbose, project, effort, intervals, freedays):
                 resource = resource.data
                 exceptions = resource["exceptions"]
                 hours = resource["hours"]
-                if day not in exceptions and is_active(day, resource["days"]):
+                if day not in exceptions and is_active(day, resource["weekdays"]):
                     if verbose:
                         res_name = resource["name"]
                         usings.append(

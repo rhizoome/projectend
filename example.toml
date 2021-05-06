@@ -34,7 +34,7 @@ workday = 8.0
     # Per day
     hours = 4
     # 0 = monday - 4 friday, empty = all weekdays
-    days = [0,2,3]
+    weekdays = [0,2,3]
 
     [[project.resources]]
     name = "hans 1"
