@@ -28,18 +28,24 @@ workday = 8.0
     effort = 8
 
     [[project.resources]]
+    name = "dave"
+    from = 2021-05-08
+    to = 2021-05-10
+    # Per day
+    hours = 2
+
+    [[project.resources]]
     name = "hans 1"
     from = 2021-05-05
     to = 2021-05-13
     hours = 4
-    exceptions = [2021-05-07]
 
     [[project.resources]]
     name = "hans 2"
     from = 2021-05-14
     to = 2021-06-01
     hours = 2
-    exceptions = []
+    exceptions = [2021-05-18]
 
 [[freedays]]
 name = "Auffahrt"
