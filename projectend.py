@@ -115,7 +115,7 @@ def simulate(verbose, project, effort, intervals, freedays):
         print("\nReached limit without achieving the goal")
         print(f"{day} {effort/24:.1f} days ({round(effort)} hours) left")
     else:
-        print(f"\nThe project ends on {day}")
+        print(f"\nThe project ends on {day - delta_day}")
 
 
 def run(verbose, project, freedays):
