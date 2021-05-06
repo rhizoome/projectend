@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "projectend"
-version = "0.12.0"
+version = "0.13.0"
 description = "calculate the end of projects"
 authors = ["Jean-Louis Fuchs <jean-louis.fuchs@adfinis-sygroup.ch>"]
 homepage = "https://github.com/ganwell/projectend"

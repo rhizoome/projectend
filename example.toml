@@ -30,9 +30,11 @@ workday = 8.0
     [[project.resources]]
     name = "dave"
     from = 2021-05-08
-    to = 2021-05-10
+    to = 2021-05-16
     # Per day
-    hours = 2
+    hours = 4
+    # 0 = monday - 4 friday, empty = all weekdays
+    days = [0,2,3]
 
     [[project.resources]]
     name = "hans 1"

@@ -18,18 +18,23 @@ def date_key(date):
     return date.strftime("%Y%m%d")
 
 
+def make_optional_set(data, key):
+    data = data.get(key)
+    if data:
+        data = set(data)
+    else:
+        data = set()
+    return data
+
+
 def get_resource_intervals(resources):
     intervals = IntervalTree()
     for resource in resources:
         assert "name" in resource
         from_ = resource["from"]
         to_ = resource["to"]
-        exceptions = resource.get("exceptions")
-        if exceptions:
-            exceptions = set(resource["exceptions"])
-        else:
-            exceptions = set()
-        resource["exceptions"] = exceptions
+        resource["exceptions"] = make_optional_set(resource, "exceptions")
+        resource["days"] = make_optional_set(resource, "days")
         intervals[from_:to_] = resource
     return intervals
 
@@ -54,6 +59,14 @@ def get_week(date):
     return date.isocalendar()[1]
 
 
+def is_active(day, days):
+    if not days:
+        return True
+    if day.weekday() in days:
+        return True
+    return False
+
+
 def simulate(verbose, project, effort, intervals, freedays):
     print(f"Simulating project: {project['name']}\n")
     day = project["start"]
@@ -72,7 +85,7 @@ def simulate(verbose, project, effort, intervals, freedays):
                 resource = resource.data
                 exceptions = resource["exceptions"]
                 hours = resource["hours"]
-                if day not in exceptions:
+                if day not in exceptions and is_active(day, resource["days"]):
                     if verbose:
                         res_name = resource["name"]
                         usings.append(
